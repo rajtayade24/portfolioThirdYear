@@ -24,7 +24,7 @@ const useAuthStore = create(
 
     darkMode: (() => {
       try {
-        return localStorage.getItem("dark") === "true";
+        return localStorage.getItem("token");
       } catch (e) {
         return false;
       }

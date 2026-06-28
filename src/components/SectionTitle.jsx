@@ -31,7 +31,7 @@ const SectionTitle = ({
       </h2>
 
       {description && (
-        <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)] sm:text-base">
+        <p className=" section-desc mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)] sm:text-base">
           {description}
         </p>
       )}
