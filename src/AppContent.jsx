@@ -71,7 +71,6 @@ const AppContent = () => {
         path="/"
         element={< Home />}
       />
-      {/* < Route path="*" element={< NotFound />} /> */}
 
     </Routes >
   );
