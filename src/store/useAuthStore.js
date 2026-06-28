@@ -27,16 +27,16 @@ const useAuthStore = create(
         const saved = localStorage.getItem("dark");
         return saved !== null ? JSON.parse(saved) : true; // default dark
       } catch (e) {
-        return false;
+        return true;
       }
       // }), // This does NOT run the function.
     })(), // calls / executes a function.
 
-    toggleDarkMode: async () =>
+    toggleDarkMode: () =>
       set((state) => {
-        const newMode = !state.darkMode
-        localStorage.setItem("dark", newMode)
-        return { darkMode: newMode }
+        const newMode = !state.darkMode;
+        localStorage.setItem("dark", JSON.stringify(newMode));
+        return { darkMode: newMode };
       }),
 
     // logout: () => {
