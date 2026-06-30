@@ -18,6 +18,8 @@ const stats = [
   { value: "7+", label: "Tech" },
 ];
 
+const isDesktop = window.matchMedia("(min-width:1024px)").matches;
+
 const Hero = () => {
   const heroRef = useRef(null);
 
@@ -72,7 +74,7 @@ const Hero = () => {
         .from(
           ".hero-image-card",
           {
-            x: window.innerWidth >= 1024 ? 40 : 0,
+            x: isDesktop ? 40 : 0,
             scale: 0.96,
             autoAlpha: 0,
             duration: 0.85,
