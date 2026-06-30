@@ -3,36 +3,31 @@ import GlassCard from "@/components/GlassCard";
 import SectionTitle from "@/components/SectionTitle";
 import TechTag from "@/components/TechTag";
 
+
 const experiences = [
   {
-    year: "2025 - Present",
-    role: "Java Full-Stack Developer",
-    company: "Personal Projects / Freelance",
-    desc: "Building modern web applications with React, Spring Boot, REST APIs, PostgreSQL, JWT authentication, and responsive UI systems.",
+    year: "2026 – Present",
+    role: "Java Full-Stack Development & Advanced Problem Solving",
+    company: "B.Tech Computer Science • Third Year",
+    desc: "Building scalable full-stack applications using React, Spring Boot, PostgreSQL, and JWT Authentication. Strengthening Data Structures & Algorithms, system design fundamentals, deployment, performance optimization, and secure application development through real-world projects.",
   },
   {
-    year: "2024 - 2025",
-    role: "Spring Boot & Backend Developer",
-    company: "Learning + Project Building",
-    desc: "Focused on backend architecture, authentication flows, database design, and scalable API development.",
+    year: "2025 – 2026",
+    role: "Frontend, Backend & Project Development",
+    company: "B.Tech Computer Science • Second Year",
+    desc: "Expanded into full-stack development with React and Spring Boot by building real-world applications. Strengthened knowledge of DBMS, Operating Systems, REST APIs, PostgreSQL  and implemented secure JWT authentication and role-based authorization using Spring Security.",
   },
   {
-    year: "2023 - 2024",
-    role: "Frontend Developer",
-    company: "React Practice Projects",
-    desc: "Created interactive, responsive UI experiences using React, JavaScript, Tailwind CSS, and animation libraries.",
-  },
-  {
-    year: "2022 - 2023",
-    role: "Computer Science Student",
-    company: "Academic Learning",
-    desc: "Built a strong foundation in programming, DSA, web development, and software engineering concepts.",
+    year: "2024 – 2025",
+    role: "Programming & Frontend Foundations",
+    company: "B.Tech Computer Science • First Year",
+    desc: "Built a strong foundation in Java, object-oriented programming, HTML, CSS, JavaScript, and React. Focused on responsive UI development, problem-solving, and understanding core software engineering principles.",
   },
 ];
 
 const stats = [
   { value: "9+", label: "Projects Built" },
-  { value: "1+", label: "Years Experience" },
+  { value: "1+", label: "Years Building Projects" },
   { value: "7+", label: "Technologies Used" },
   { value: "100%", label: "Passion for Growth" },
 ];
@@ -40,10 +35,12 @@ const stats = [
 const focusItems = [
   "React",
   "Spring Boot",
+  "Spring Security",
   "JWT Authentication",
   "PostgreSQL",
   "REST APIs",
-  "Tailwind CSS",
+  "DSA",
+  "System Design",
   "Deployment",
 ];
 
@@ -61,10 +58,10 @@ const Experience = () => {
 
       <div className="relative mx-auto max-w-7xl">
         <SectionTitle
-          eyebrow="Experience"
-          title="My learning and"
-          highlight="development journey"
-          description="A timeline of how I grew from learning the basics to building modern full-stack applications with real-world focus."
+          eyebrow="Learning Journey"
+          title="My academic and"
+          highlight="technical growth"
+          description="A timeline showing how I progressed from programming fundamentals to building scalable full-stack applications through continuous learning and real-world projects."
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -123,9 +120,10 @@ const Experience = () => {
                 What this journey shows
               </h3>
               <p className="mt-4 text-base leading-8 text-[var(--muted)]">
-                I keep improving by building real projects, learning backend systems,
-                and refining frontend design. My goal is to deliver clean, scalable,
-                and visually polished web applications.
+                My journey reflects consistent growth from learning programming fundamentals
+                to developing complete full-stack applications. Every academic year has been
+                focused on mastering new technologies, strengthening computer science
+                concepts, and applying them through practical projects.
               </p>
 
               <div className="mt-6 grid grid-cols-2 gap-4">
