@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import useAuthStore from "@/store/useAuthStore";
 import { Skeleton } from "@/components/ui/Skeleton";
-import Home from "./pages/Home";
+import Home from "@/pages/Home";
 
 function LoadingState() {
   return (

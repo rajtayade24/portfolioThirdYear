@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import useAuthStore from "@/store/useAuthStore";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -44,13 +45,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <button
-            onClick={toggleDarkMode}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--fg)] shadow-[var(--shadow)] backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--card-strong)]"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
-          </button>
+             <ThemeToggleButton />
 
           <a
             href="#contact"
@@ -61,14 +56,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
-          <button
-            onClick={toggleDarkMode}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--fg)] shadow-[var(--shadow)] backdrop-blur-md"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
-          </button>
-
+          <ThemeToggleButton />
           <button
             onClick={() => setOpen(!open)}
             className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--fg)] shadow-[var(--shadow)] backdrop-blur-md"

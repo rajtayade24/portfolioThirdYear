@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope } from "react-icons/fa";
 
 const socialItems = [
@@ -25,6 +25,8 @@ const socialItems = [
 ];
 
 const SocialLinks = ({ items = socialItems, className = "" }) => {
+  const reduceMotion = useReducedMotion();
+ 
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       {items.map((item, index) => {

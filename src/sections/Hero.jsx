@@ -7,7 +7,7 @@ import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import Button from "@/components/Button";
 import SocialLinks from "@/components/SocialLinks";
 import GlassCard from "@/components/GlassCard";
-import profileImage from "../assets/images/profile.png";
+import profileImage from "@/assets/images/profile.png";
 import CircularRing from "@/components/CircularRing";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -72,7 +72,7 @@ const Hero = () => {
         .from(
           ".hero-image-card",
           {
-            x: 40,
+            x: window.innerWidth >= 1024 ? 40 : 0,
             scale: 0.96,
             autoAlpha: 0,
             duration: 0.85,
@@ -228,7 +228,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-xl">
+        {/* <div className="relative mx-auto w-full max-w-xl"> */}
+        <div className="relative mx-auto w-full max-w-[340px] sm:max-w-xl">
           <div className="hero-floating absolute -left-6 top-10 hidden h-20 w-20 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-xl lg:block">
             <div className="h-full w-full rounded-2xl bg-gradient-theme opacity-70" />
           </div>
@@ -266,7 +267,8 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="grid w-full gap-4 sm:grid-cols-2">
+              {/* <div className="grid w-full gap-4 sm:grid-cols-2"> */}
+              <div className="grid w-full min-w-0 gap-4 sm:grid-cols-2">
                 <div className="hero-work rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-soft)] backdrop-blur-xl">
                   <p className="text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
                     Currently working on

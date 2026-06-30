@@ -9,12 +9,12 @@ import SectionTitle from "@/components/SectionTitle";
 import Button from "@/components/Button";
 import useCardTilt from "@/hooks/useCardTilt";
 
-import portfolioImage from "../assets/images/projects/portfolio.png";
-import ecommerceImage from "../assets/images/projects/ecommerce.png";
-import socialMediaImage from "../assets/images/projects/socialmedia.png";
-import tradeSutraImage from "../assets/images/projects/tradesutra.png";
-import musicPlayerImage from "../assets/images/projects/spotify.png";
-import appleImage from "../assets/images/projects/apple.png";
+import portfolioImage from "@/assets/images/projects/portfolio.png";
+import ecommerceImage from "@/assets/images/projects/ecommerce.png";
+import socialMediaImage from "@/assets/images/projects/socialmedia.png";
+import tradeSutraImage from "@/assets/images/projects/tradesutra.png";
+import musicPlayerImage from "@/assets/images/projects/spotify.png";
+import appleImage from "@/assets/images/projects/apple.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,9 +106,8 @@ function ProjectCard({ project, featured = false }) {
         <GlassCard className="h-full overflow-hidden p-0">
           <div className="relative overflow-hidden">
             <div
-              className={`relative overflow-hidden ${
-                featured ? "aspect-[16/10]" : "aspect-[4/3]"
-              }`}
+              className={`relative overflow-hidden ${featured ? "aspect-[16/10]" : "aspect-[4/3]"
+                }`}
             >
               <motion.img
                 src={project.image}
@@ -136,16 +135,14 @@ function ProjectCard({ project, featured = false }) {
 
             <div className="absolute bottom-0 left-0 w-full p-6 sm:p-7">
               <h3
-                className={`font-semibold text-white ${
-                  featured ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
-                }`}
+                className={`font-semibold text-white ${featured ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
+                  }`}
               >
                 {project.title}
               </h3>
               <p
-                className={`mt-4 text-white/75 ${
-                  featured ? "max-w-2xl text-sm leading-7 sm:text-base" : "text-sm leading-7"
-                }`}
+                className={`mt-4 text-white/75 ${featured ? "max-w-2xl text-sm leading-7 sm:text-base" : "text-sm leading-7"
+                  }`}
               >
                 {project.description}
               </p>

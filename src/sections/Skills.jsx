@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import GlassCard from "@/components/GlassCard";
 import SectionTitle from "@/components/SectionTitle";
+import { Sparkles } from "lucide-react";
+import TechTag from "@/components/TechTag";
 
 const skillGroups = [
   {
@@ -175,24 +177,21 @@ const Skills = () => {
           </GlassCard>
 
           <GlassCard className="p-6 sm:p-8">
-            <h3 className="text-xl font-bold text-[var(--fg)]">Tech stack</h3>
-            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-              A curated set of technologies I use regularly in full-stack development.
-            </p>
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-400/10 text-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.18)] ring-1 ring-blue-500/20">
+                <Sparkles className="h-5 w-5" />
+              </span>
+              <div>
+                <h3 className="text-xl font-bold text-[var(--fg)]">Tech stack</h3>
+                <p className="mt-1 text-sm text-[var(--muted)]">
+                  A curated set of technologies I use regularly in full-stack development.
+                </p>
+              </div>
+            </div>
 
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               {techTags.map((tag, index) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.35, delay: index * 0.03 }}
-                  whileHover={{ y: -3 }}
-                  className="rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--fg)] shadow-[var(--shadow-soft)] backdrop-blur-xl transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/10 hover:shadow-[var(--shadow-card-hover)]"
-                >
-                  {tag}
-                </motion.span>
+                <TechTag key={tag} tag={tag} index={index} />
               ))}
             </div>
           </GlassCard>

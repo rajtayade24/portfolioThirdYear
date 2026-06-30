@@ -1,5 +1,5 @@
 import { extractError } from "@/utils/extractError";
-import { api } from "./api";
+import { api } from "@/services/api";
 
 export const postFeedbackRequest = async (payload) => {
   try {

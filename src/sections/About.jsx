@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import GlassCard from "@/components/GlassCard";
 import SectionTitle from "@/components/SectionTitle";
-import profileImage from "../assets/images/profile.png";
+import profileImage from "@/assets/images/profile.png";
 import useImageTilt from "@/hooks/useImageTilt";
+import TechTag from "@/components/TechTag";
 
 const highlights = [
   {
@@ -120,7 +121,7 @@ const About = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="space-y-8"
           >
-          <GlassCard className="p-6 sm:p-8">
+            <GlassCard className="p-6 sm:p-8">
               <p className="text-base leading-8 text-[var(--muted)] sm:text-lg">
                 Hello, I'm{" "}
                 <span className="font-medium text-[var(--fg)]">
@@ -166,16 +167,7 @@ const About = () => {
 
             <div className="flex flex-wrap gap-3">
               {techStack.map((tech, index) => (
-                <motion.span
-                  key={tech}
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.35, delay: index * 0.03 }}
-                  className="rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-medium text-[var(--fg)] shadow-[var(--shadow-soft)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-[var(--card-strong)]"
-                >
-                  {tech}
-                </motion.span>
+                <TechTag key={index} tag={tech} index={index} />
               ))}
             </div>
           </motion.div>
