@@ -71,7 +71,6 @@ const AppContent = () => {
         path="/"
         element={< Home />}
       />
-
     </Routes >
   );
 };

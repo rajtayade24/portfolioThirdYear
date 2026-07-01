@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaFileAlt } from "react-icons/fa";
 
 import Button from "@/components/Button";
 import SocialLinks from "@/components/SocialLinks";
@@ -200,6 +200,16 @@ const Hero = () => {
             </Button>
             <Button href="#contact" variant="secondary" size="lg">
               Contact Me
+            </Button>
+            <Button
+              href="https://drive.google.com/file/d/1nT52CdGVJjO-rwn5uM0IVomnJefQHCNe/view?usp=sharing"
+              size="lg"
+              variant="secondary"
+              className="flex items-center gap-2"
+              target="_blank"
+            >
+              <FaFileAlt />
+              Resume
             </Button>
           </div>
 

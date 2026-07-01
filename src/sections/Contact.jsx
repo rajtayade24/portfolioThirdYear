@@ -57,7 +57,7 @@ const Contact = () => {
       toast.success("Message sent successfully.");
     } catch (error) {
       console.error(error);
-      toast.error("Failed to send message.");
+      toast.error("Backend server is not hosted!!");
     } finally {
       setLoading(false);
     }

@@ -26,7 +26,7 @@ const projects = [
     image: ecommerceImage,
     tech: ["React", "Spring Boot", "PostgreSQL", "JWT", "Tailwind CSS"],
     live: "https://ecommerce-backend-clean-18-lspu.onrender.com",
-    code: "https://github.com/rajtayade24/ecommerce-platform",
+    code: "https://github.com/rajtayade24/ecommerce-backend-clean",
     featured: true,
   },
   {
@@ -75,8 +75,8 @@ const projects = [
       "A premium personal portfolio showcasing projects, skills, animations, glassmorphism UI, dark mode, and fully responsive design using React and Framer Motion.",
     image: portfolioImage,
     tech: ["React", "Tailwind", "Framer Motion"],
-    live: "https://glistening-exploration-production.up.railway.app",
-    code: "https://github.com/rajtayade24/portfolio",
+    live: "https://portfolio-third-year.vercel.app",
+    code: "https://github.com/rajtayade24/portfolioThirdYear",
     featured: false,
   },
 ];

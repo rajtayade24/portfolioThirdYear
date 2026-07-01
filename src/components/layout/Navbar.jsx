@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
+import { FiMenu, FiX, FiDownload, FiMoon, FiSun } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import useAuthStore from "@/store/useAuthStore";
 import ThemeToggleButton from "@/components/ThemeToggleButton";
@@ -28,7 +28,7 @@ const Navbar = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="group text-xl font-bold tracking-tight"
         >
-      <span className="gradient-text">Raj</span>
+          <span className="gradient-text">Raj</span>
           <span className="text-[var(--fg)]">.dev</span>
         </motion.a>
 
@@ -45,7 +45,16 @@ const Navbar = () => {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-             <ThemeToggleButton />
+          <ThemeToggleButton />
+
+          <a
+            href="https://drive.google.com/file/d/1nT52CdGVJjO-rwn5uM0IVomnJefQHCNe/view?usp=sharing"
+            target="_blank"
+            className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--fg)] shadow-[var(--shadow)] backdrop-blur-md transition hover:-translate-y-0.5"
+          >
+            <FiDownload size={16} />
+            Resume
+          </a>
 
           <a
             href="#contact"
@@ -87,6 +96,16 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
+
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                onClick={handleClick}
+                className="flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm text-[var(--fg)] transition hover:bg-[var(--card-strong)]"
+              >
+                <FiDownload size={16} />
+                Resume
+              </a>
 
               <a
                 href="#contact"

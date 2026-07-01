@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="relative mx-auto flex max-w-7xl flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div className="max-w-md">
           <h3 className="text-2xl font-bold tracking-tight">
-          <span className="gradient-text">Raj</span>
+            <span className="gradient-text">Raj</span>
             <span>.dev</span>
           </h3>
 
@@ -41,10 +41,13 @@ const Footer = () => {
               { name: "Skills", href: "#skills" },
               { name: "Projects", href: "#projects" },
               { name: "Contact", href: "#contact" },
+              { name: "Resume", href: "https://drive.google.com/file/d/1nT52CdGVJjO-rwn5uM0IVomnJefQHCNe/view?usp=sharing" },
             ].map((item) => (
               <a
                 key={item.name}
                 href={item.href}
+                target={item.name === "Resume" ? "_blank" : undefined}
+                rel={item.name === "Resume" ? "noreferrer" : undefined}
                 className="text-[var(--muted)] transition duration-200 hover:-translate-x-0.5 hover:text-[var(--fg)]"
               >
                 {item.name}
