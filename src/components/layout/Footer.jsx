@@ -18,16 +18,41 @@ const Footer = () => {
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div className="max-w-md">
-          <h3 className="text-2xl font-bold tracking-tight">
+
+          <motion.h3
+            whileHover={{
+              scale: 1.05,
+              textShadow: "0 0 18px rgba(59,130,246,.35)",
+            }}
+            transition={{ duration: 0.3 }}
+            className="cursor-default text-2xl font-bold tracking-tight"
+          >
             <span className="gradient-text">Raj</span>
             <span>.dev</span>
-          </h3>
+          </motion.h3>
 
+          {/* divider */}
+          <div className="mt-6 h-px w-20 bg-gradient-to-r from-[var(--primary)] to-transparent" />
+
+          {/* description */}
           <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
             Java Full-Stack Developer building modern, scalable, and beautiful web experiences with React,
             Spring Boot, and clean UI engineering.
           </p>
+
+          {/* quote */}
+          <p className="mt-6 border-l-2 border-[var(--primary)] pl-4 italic text-sm text-[var(--muted)]">
+            "Great software isn't just functional—it feels effortless."
+          </p>
+
+          {/* availability badge */}
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-xs font-medium text-green-500">
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            Available for opportunities
+          </div>
+
         </div>
+
 
         <div>
           <h4 className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
@@ -48,7 +73,7 @@ const Footer = () => {
                 href={item.href}
                 target={item.name === "Resume" ? "_blank" : undefined}
                 rel={item.name === "Resume" ? "noreferrer" : undefined}
-                className="text-[var(--muted)] transition duration-200 hover:-translate-x-0.5 hover:text-[var(--fg)]"
+                className="text-[var(--muted)] transition duration-200 hover:translate-x-1 hover:text-[var(--fg)]"
               >
                 {item.name}
               </a>
@@ -91,7 +116,11 @@ const Footer = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.35, delay: index * 0.05 }}
-                  whileHover={{ y: -4, scale: 1.04 }}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.08,
+                    rotate: 6,
+                  }}
                   whileTap={{ scale: 0.96 }}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--fg)] shadow-[var(--shadow)] backdrop-blur-md transition hover:bg-[var(--card-strong)]"
                 >
@@ -104,13 +133,25 @@ const Footer = () => {
       </div>
 
       <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-4 border-t border-[var(--border)] pt-6 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
-        <p>© {year} Raj Tayade. All rights reserved.</p>
+        <div className="space-y-1">
+          <p className="font-medium">
+            © {year} Raj Tayade. All rights reserved.
+          </p>
 
+          <p className="text-xs text-[var(--muted)]">
+            Designed & Developed with React, GSAP, Framer Motion and ❤️
+          </p>
+        </div>
         <a
           href="#home"
-          className="inline-flex items-center gap-2 transition hover:text-[var(--fg)]"
+          className="group inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--card-strong)]"
         >
-          Back to top <FaArrowUp size={12} />
+          Back to top
+
+          <FaArrowUp
+            size={12}
+            className="transition-transform duration-300 group-hover:-translate-y-1"
+          />
         </a>
       </div>
     </footer>

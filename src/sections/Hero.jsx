@@ -23,10 +23,59 @@ const isDesktop = window.matchMedia("(min-width:1024px)").matches;
 const Hero = () => {
   const heroRef = useRef(null);
 
+  const cardRef = useRef(null);
+  const imageRef = useRef(null);
+  const ringRef = useRef(null);
+  const shineRef = useRef(null);
+
+  const move = (e) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 12;
+    const rotateX = ((y / rect.height) - 0.5) * -12;
+
+    gsap.to(cardRef.current, {
+      rotateX,
+      rotateY,
+      transformPerspective: 1200,
+      transformOrigin: "center",
+      duration: 0.45,
+      ease: "power3.out",
+    });
+  };
+
+  const leave = () => {
+    gsap.to(cardRef.current, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.8,
+      ease: "power3.out",
+    });
+  };
+
   useGSAP(
     () => {
+      gsap.set(cardRef.current, {
+        transformPerspective: 1200,
+        transformStyle: "preserve-3d",
+      });
+
+      gsap.set(imageRef.current, {
+        rotateY: 60,
+        rotateX: -25,
+        scale: 1.35,
+        opacity: 0,
+      });
+
       const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
+        defaults: {
+          ease: "power3.out",
+        },
       });
 
       tl.from(".hero-badge", {
@@ -34,6 +83,7 @@ const Hero = () => {
         autoAlpha: 0,
         duration: 0.55,
       })
+
         .from(
           ".hero-title-line",
           {
@@ -44,6 +94,7 @@ const Hero = () => {
           },
           "-=0.15"
         )
+
         .from(
           ".hero-description",
           {
@@ -53,6 +104,7 @@ const Hero = () => {
           },
           "-=0.42"
         )
+
         .from(
           ".hero-actions",
           {
@@ -62,6 +114,7 @@ const Hero = () => {
           },
           "-=0.35"
         )
+
         .from(
           ".hero-social-block",
           {
@@ -71,16 +124,30 @@ const Hero = () => {
           },
           "-=0.3"
         )
-        .from(
-          ".hero-image-card",
+
+        .to(
+          imageRef.current,
           {
-            x: isDesktop ? 40 : 0,
-            scale: 0.96,
-            autoAlpha: 0,
-            duration: 0.85,
+            opacity: 1,
+            scale: 1,
+            rotateX: 0,
+            rotateY: 0,
+            duration: 1.25,
+            ease: "expo.out",
           },
-          "-=0.65"
+          "-=0.55"
         )
+
+        .to(
+          shineRef.current,
+          {
+            x: "220%",
+            duration: 1.3,
+            ease: "power2.inOut",
+          },
+          "-=1"
+        )
+
         .from(
           ".hero-floating",
           {
@@ -89,8 +156,9 @@ const Hero = () => {
             stagger: 0.12,
             duration: 0.55,
           },
-          "-=0.55"
+          "-=0.9"
         )
+
         .from(
           ".hero-stats, .hero-work, .hero-focus",
           {
@@ -101,6 +169,7 @@ const Hero = () => {
           },
           "-=0.45"
         )
+
         .from(
           ".hero-scroll",
           {
@@ -109,7 +178,25 @@ const Hero = () => {
             duration: 0.35,
           },
           "-=0.25"
+
         );
+
+      // rotating ring
+      gsap.to(ringRef.current, {
+        rotate: 360,
+        repeat: -1,
+        duration: 28,
+        ease: "none",
+      });
+
+      // breathing image
+      gsap.to(imageRef.current, {
+        scale: 1.03,
+        repeat: -1,
+        yoyo: true,
+        duration: 3,
+        ease: "sine.inOut",
+      });
 
       gsap.to(".hero-orb", {
         yPercent: 10,
@@ -247,19 +334,38 @@ const Hero = () => {
           </div>
 
           <div className="hero-floating absolute -right-2 bottom-16 hidden h-16 w-16 rounded-full border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-soft)] backdrop-blur-xl lg:block" />
-
-          <GlassCard className="hero-image-card relative">
+          <GlassCard
+            ref={cardRef}
+             hover={false}
+            className="hero-image-card relative"
+            onMouseMove={move}
+            onMouseLeave={leave}
+          >
             <div className="flex flex-col items-center gap-8 p-2 sm:p-4">
               <div className="relative">
-                <div className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 sm:h-[290px] sm:w-[290px]">
+                <div
+                  ref={ringRef}
+                  className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 sm:h-[290px] sm:w-[290px]"
+                >
                   <CircularRing size={290} label="RT" />
                 </div>
 
-                <div className="relative z-10 h-48 w-48 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--card)] p-2 shadow-[var(--shadow-card)] sm:h-56 sm:w-56">
+                <div
+                  className="relative z-10 h-48 w-48 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--card)] p-2 shadow-[var(--shadow-card)] sm:h-56 sm:w-56"
+                >
                   <img
+                    ref={imageRef}
                     src={profileImage}
                     alt="Raj Tayade"
-                    className="h-full w-full rounded-full object-cover"
+className="h-full w-full rounded-full object-cover will-change-transform"                  />
+                  <div
+                    ref={shineRef}
+                    className="absolute inset-0 bg-gradient-to-r
+                     from-transparent
+                     via-white/40
+                     to-transparent
+                     -translate-x-full
+                     rotate-12"
                   />
                 </div>
               </div>

@@ -115,6 +115,23 @@ const Contact = () => {
           description="Whether you have a project, job opportunity, or just want to say hello, my inbox is always open."
         />
 
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-5 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-70" />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-green-400" />
+          </span>
+
+          <span className="text-sm font-medium text-green-500">
+            Available for Full-time & Freelance
+          </span>
+        </motion.div>
+
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -134,20 +151,46 @@ const Contact = () => {
               </div>
 
               <div className="space-y-5">
-                <div className="flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-md">
+
+                <motion.div
+                  whileHover={{
+                    y: -6,
+                    scale: 1.02
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 250
+                  }}
+                  className="flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-md"
+                >
                   <div className="icon-glass h-14 w-14">
                     <FiMail className="text-2xl text-[var(--primary)]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-[var(--fg)]">Email</h4>
-                    <p className="text-sm text-[var(--muted)]">
+                    <a
+                      href="mailto:rajtayade2492006@gmail.com"
+                      className="text-sm text-[var(--muted)] hover:text-[var(--primary)] transition"
+                    >
                       rajtayade2492006@gmail.com
-                    </p>
+                    </a>
+                    {/* <p className="text-sm text-[var(--muted)]">
+                      rajtayade2492006@gmail.com
+                    </p> */}
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-md">
-                  <div className="icon-glass h-14 w-14">
+                <motion.div
+                  whileHover={{
+                    y: -6,
+                    scale: 1.02
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 250
+                  }}
+                  className="flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-md"
+                >   <div className="icon-glass h-14 w-14">
                     <FiPhone className="text-2xl text-[var(--primary)]" />
                   </div>
                   <div>
@@ -156,9 +199,18 @@ const Contact = () => {
                       +91 87674 58908
                     </p>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-md">
+                </motion.div>
+                <motion.div
+                  whileHover={{
+                    y: -6,
+                    scale: 1.02
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 250
+                  }}
+                  className="flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow-soft)] backdrop-blur-md"
+                >
                   <div className="icon-glass h-14 w-14">
                     <FiMapPin className="text-2xl text-[var(--primary)]" />
                   </div>
@@ -168,11 +220,18 @@ const Contact = () => {
                       Pune, Maharashtra
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
+              <div className="my-8 h-px bg-[var(--border)]" />
+
               <div className="mt-8 flex gap-4">
-                <a
+                <motion.a
+                  whileHover={{
+                    y: -5,
+                    rotate: -6,
+                    scale: 1.08
+                  }}
                   href="https://github.com/rajtayade24"
                   target="_blank"
                   rel="noreferrer"
@@ -180,9 +239,14 @@ const Contact = () => {
                   className="icon-glass h-14 w-14 text-[var(--fg)] transition hover:-translate-y-1 hover:bg-[var(--card-strong)]"
                 >
                   <FiGithub className="text-2xl" />
-                </a>
+                </motion.a>
 
-                <a
+                <motion.a
+                  whileHover={{
+                    y: -5,
+                    rotate: -6,
+                    scale: 1.08
+                  }}
                   href="https://www.linkedin.com/in/raj-tayade-68a800328/"
                   target="_blank"
                   rel="noreferrer"
@@ -190,7 +254,7 @@ const Contact = () => {
                   className="icon-glass h-14 w-14 text-[var(--fg)] transition hover:-translate-y-1 hover:bg-[var(--card-strong)]"
                 >
                   <FiLinkedin className="text-2xl" />
-                </a>
+                </motion.a>
               </div>
             </GlassCard>
           </motion.div>
@@ -201,7 +265,8 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <GlassCard className="h-full p-6 sm:p-8">
+            <GlassCard className="h-full p-6 sm:p-8"
+            >
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-5 md:grid-cols-2">
                   <FloatingInput
@@ -280,16 +345,36 @@ const Contact = () => {
                   </label>
                 </div>
 
-                <Button type="submit" className="w-full" variant="primary">
-                  {loading ? "Sending..." : "Send Message"}
-                  <FiSend />
+                <Button type="submit" className="w-full relative overflow-hidden " variant="primary">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+
+                    {loading ? "Sending..." : "Send Message"}
+
+                    <FiSend className="
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                    group-hover:-translate-y-1
+                    "/>
+
+                  </span>
+
+                  <div className="
+                    absolute
+                    inset-0
+                    translate-y-full
+                    group-hover:translate-y-0
+                    transition-transform
+                    duration-500
+                    bg-white/10
+                    "/>
                 </Button>
               </form>
             </GlassCard>
           </motion.div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

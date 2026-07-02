@@ -82,7 +82,10 @@ const Experience = () => {
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.4, ease: "easeInOut" }}
+                transition={{
+                  duration: 1.2,
+                  ease: "easeOut",
+                }}
                 style={{ originY: 0 }}
                 className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--primary)] via-[var(--primary-2)] to-transparent sm:left-5"
               />
@@ -94,15 +97,51 @@ const Experience = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{
-                      duration: 0.5,
-                      delay: index * 0.08,
-                      ease: "easeOut",
+                      type: "spring",
+                      stiffness: 120,
+                      damping: 16,
+                      delay: 0.25 + index * 0.12,
                     }}
                     whileHover={{ y: -2 }}
                     className="relative pl-12 sm:pl-16"
                   >
                     <div className="absolute left-0 top-2 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg)] shadow-[var(--shadow-soft)] sm:h-10 sm:w-10">
-                      <div className="h-3 w-3 rounded-full bg-gradient-theme" />
+
+                      {/* Glow */}
+                      <motion.div
+                        initial={{
+                          scale: 0,
+                          opacity: 0,
+                        }}
+                        whileInView={{
+                          scale: [0, 2.4],
+                          opacity: [0.55, 0],
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.8,
+                          delay: index * 0.15 + 0.25,
+                          ease: "easeOut",
+                        }}
+                        className="absolute h-6 w-6 rounded-full bg-blue-500 blur-md"
+                      />
+
+                      {/* Main Dot */}
+                      <motion.div
+                        initial={{
+                          scale: 0,
+                        }}
+                        whileInView={{
+                          scale: [0, 1.35, 1],
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.55,
+                          delay: index * 0.15,
+                          ease: "backOut",
+                        }}
+                        className="h-3 w-3 rounded-full bg-gradient-theme"
+                      />
                     </div>
 
                     <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow-soft)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--primary)_25%,transparent)] hover:bg-[var(--card-strong)]">

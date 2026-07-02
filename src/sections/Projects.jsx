@@ -102,7 +102,16 @@ function ProjectCard({ project, featured = false }) {
       }}
       className="group relative"
     >
-      <motion.div whileHover={{ scale: 1.01 }} transition={{ duration: 0.25 }}>
+      <motion.div
+        whileHover={{
+          y: -10,
+          scale: 1.015,
+        }}
+        transition={{
+          duration: 0.35,
+          ease: "easeOut",
+        }}
+      >
         <GlassCard className="h-full overflow-hidden p-0">
           <div className="relative overflow-hidden">
             <div
@@ -112,19 +121,50 @@ function ProjectCard({ project, featured = false }) {
               <motion.img
                 src={project.image}
                 alt={project.title}
-                className="h-full w-full object-cover"
-                initial={false}
-                whileHover={{ scale: 1.08 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 draggable="false"
               />
+              <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <div
+                  className="
+                        absolute
+                        -left-1/2
+                        top-0
+                        h-full
+                        w-1/3
+                        -skew-x-12
+                        bg-white/10
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent dark:from-black/75 dark:via-black/25" />
+                        translate-x-[-250%]
+
+                        transition-transform
+                        duration-1000
+
+                        group-hover:translate-x-[600%]
+                    "
+                />
+              </div>
+
+              <div
+                className="
+                       absolute inset-0
+                       bg-gradient-to-t
+                       from-black/60
+                       via-black/15
+                       to-transparent
+                       opacity-80
+                       transition-all
+                       duration-500
+                       group-hover:from-black/80
+                       group-hover:via-black/45
+                       group-hover:opacity-100
+                    "
+              />
             </div>
 
             {featured && (
               <div className="absolute left-0 top-0 flex w-full items-start justify-between p-5">
-                <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white/90 backdrop-blur-md">
+                <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white/90 backdrop-blur-md transition duration-300 group-hover:scale-105 group-hover:bg-white/20 ">
                   Featured
                 </span>
                 <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
@@ -150,7 +190,7 @@ function ProjectCard({ project, featured = false }) {
           </div>
 
           <div className="border-t border-[var(--border)] bg-[var(--card)] p-6 backdrop-blur-xl sm:p-7">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 overflow-hidden">
               {project.tech.map((tech, index) => (
                 <motion.span
                   key={tech}
@@ -162,16 +202,46 @@ function ProjectCard({ project, featured = false }) {
                 >
                   {tech}
                 </motion.span>
+                //                 <span
+                //     className="
+                //     rounded-full
+                //     border
+                //     border-[var(--border)]
+                //     bg-[var(--card-strong)]
+                //     px-3
+                //     py-1
+                //     text-xs
+                //     font-medium
+                //     text-[var(--fg)]
+                //     backdrop-blur-md
+
+                //     opacity-70
+                //     translate-y-3
+
+                //     transition-all
+                //     duration-300
+
+                //     group-hover:opacity-100
+                //     group-hover:translate-y-0
+                // "
+                //     style={{
+                //         transitionDelay: `${index * 40}ms`,
+                //     }}
+                // >
+                //     {tech}
+                // </span>
               ))}
             </div>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45 }}
               className="mt-6 flex flex-wrap gap-3"
-            >
+            > */}
+            <div className="mt-6 flex flex-wrap gap-3 opacity-70 translate-y-3 transition-all duration-400 delay-150 group-hover:opacity-100 group-hover:translate-y-0">
+
               <Button href={project.live} target="_blank" rel="noreferrer" size="sm">
                 Live Demo <FiArrowUpRight />
               </Button>
@@ -184,11 +254,11 @@ function ProjectCard({ project, featured = false }) {
               >
                 Code <FiGithub />
               </Button>
-            </motion.div>
+            </div>
           </div>
         </GlassCard>
       </motion.div>
-    </motion.div>
+    </motion.div >
   );
 }
 
