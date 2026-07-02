@@ -25,13 +25,24 @@ const experiences = [
   },
 ];
 
-const stats = [
-  { value: "9+", label: "Projects Built" },
-  { value: "1+", label: "Years Building Projects" },
-  { value: "7+", label: "Technologies Used" },
-  { value: "100%", label: "Passion for Growth" },
+const principles = [
+  {
+    title: "Clean Architecture",
+    desc: "Building scalable and maintainable applications using modular design.",
+  },
+  {
+    title: "Performance",
+    desc: "Optimizing frontend rendering, APIs, and database interactions.",
+  },
+  {
+    title: "Security",
+    desc: "Implementing JWT authentication, Spring Security, and secure REST APIs.",
+  },
+  {
+    title: "Continuous Learning",
+    desc: "Improving through real-world projects, DSA, and modern backend practices.",
+  },
 ];
-
 const focusItems = [
   "React",
   "Spring Boot",
@@ -67,8 +78,14 @@ const Experience = () => {
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <GlassCard className="p-6 sm:p-8">
             <div className="relative">
-              <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--primary)] via-[var(--primary-2)] to-transparent sm:left-5" />
-
+              <motion.div
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.4, ease: "easeInOut" }}
+                style={{ originY: 0 }}
+                className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--primary)] via-[var(--primary-2)] to-transparent sm:left-5"
+              />
               <div className="space-y-8">
                 {experiences.map((item, index) => (
                   <motion.div
@@ -117,35 +134,40 @@ const Experience = () => {
           <div className="space-y-6">
             <GlassCard className="p-6 sm:p-8">
               <h3 className="text-2xl font-semibold text-[var(--fg)]">
-                What this journey shows
+                Engineering Principles
               </h3>
-              <p className="mt-4 text-base leading-8 text-[var(--muted)]">
-                My journey reflects consistent growth from learning programming fundamentals
-                to developing complete full-stack applications. Every academic year has been
-                focused on mastering new technologies, strengthening computer science
-                concepts, and applying them through practical projects.
+
+              <p className="mt-3 text-base leading-8 text-[var(--muted)]">
+                The principles that guide how I design, develop, and continuously improve
+                every project I build.
               </p>
 
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                {stats.map((stat) => (
+              <div className="mt-8 space-y-5">
+                {principles.map((item, index) => (
                   <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
+                    key={item.title}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{
                       duration: 0.45,
-                      delay: 0.05,
-                      ease: "easeOut",
+                      delay: index * 0.08,
                     }}
-                    whileHover={{ y: -4 }}
-                    className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-center shadow-[var(--shadow-soft)] backdrop-blur-md transition-all duration-300 hover:bg-[var(--card-strong)] hover:shadow-[var(--shadow-card-hover)]"
+                    whileHover={{ x: 6 }}
+                    className="flex items-start gap-4"
                   >
-                    <div className="text-2xl font-semibold text-[var(--fg)] sm:text-3xl">
-                      {stat.value}
+                    <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-theme text-white shadow-[0_10px_25px_rgba(37,99,235,0.25)]">
+                      ✓
                     </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-                      {stat.label}
+
+                    <div>
+                      <h4 className="font-semibold text-[var(--fg)]">
+                        {item.title}
+                      </h4>
+
+                      <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                        {item.desc}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -154,10 +176,15 @@ const Experience = () => {
 
             <GlassCard className="p-6 sm:p-8">
               <h3 className="text-xl font-semibold text-[var(--fg)]">
-                Current focus
+                Currently Exploring
               </h3>
 
-              <div className="mt-4 flex flex-wrap gap-3">
+              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                Technologies and concepts I'm actively improving through projects and
+                continuous learning.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
                 {focusItems.map((item, index) => (
                   <TechTag key={item} tag={item} index={index} />
                 ))}

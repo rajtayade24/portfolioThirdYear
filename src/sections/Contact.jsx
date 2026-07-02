@@ -14,6 +14,39 @@ import GlassCard from "@/components/GlassCard";
 import SectionTitle from "@/components/SectionTitle";
 import Button from "@/components/Button";
 import { postFeedbackRequest } from "@/services/feedbackService";
+import { Input } from "@/components/ui/Input";
+
+const FloatingInput = ({ label, ...props }) => (
+  <div className="relative">
+    <Input placeholder=" " {...props} />
+
+    <label
+      className="
+      absolute left-4 top-4
+      pointer-events-none
+      text-[var(--muted)]
+      
+      transition-all duration-200
+      
+      peer-placeholder-shown:text-base
+      peer-placeholder-shown:top-4
+      
+      peer-focus:-top-2
+      peer-focus:text-xs
+      peer-focus:text-[var(--primary)]
+
+      peer-not-placeholder-shown:-top-2
+      peer-not-placeholder-shown:text-xs
+
+      bg-[var(--card)]
+      px-2
+      rounded-md
+      "
+    >
+      {label}
+    </label>
+  </div>
+);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -171,42 +204,81 @@ const Contact = () => {
             <GlassCard className="h-full p-6 sm:p-8">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-5 md:grid-cols-2">
-                  <input
-                    type="text"
+                  <FloatingInput
+                    label="Your Name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your Name"
-                    className="input-premium"
                   />
 
-                  <input
+                  <FloatingInput
+                    label="Email Address"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email Address"
-                    className="input-premium"
                   />
+
                 </div>
 
-                <input
-                  type="text"
+                <FloatingInput
+                  label="Subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Subject"
-                  className="input-premium"
                 />
 
-                <textarea
-                  rows={7}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Write your message..."
-                  className="textarea-premium"
-                />
+                <div className="relative">
+                  <textarea
+                    rows={7}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="
+                          peer
+                          w-full
+                          rounded-2xl
+                          border border-[var(--border)]
+                          bg-[var(--card)]
+                          px-4 pt-6 pb-3
+                          text-[var(--fg)]
+                          resize-none
+                          transition-all duration-300
+
+                          focus:outline-none
+                          focus:border-[var(--primary)]
+                          focus:ring-4
+                          focus:ring-[color-mix(in_srgb,var(--primary)_18%,transparent)]
+                          focus:shadow-[0_0_24px_color-mix(in_srgb,var(--primary)_25%,transparent)]
+                        "
+                  />
+
+                  <label
+                    className="
+                          absolute left-4 top-4
+                          pointer-events-none
+                          bg-[var(--card)]
+                          px-2
+                          rounded-md
+                          text-[var(--muted)]
+    
+                          transition-all duration-200
+    
+                          peer-placeholder-shown:top-4
+                          peer-placeholder-shown:text-base
+    
+                          peer-focus:-top-2
+                          peer-focus:text-xs
+                          peer-focus:text-[var(--primary)]
+    
+                          peer-not-placeholder-shown:-top-2
+                          peer-not-placeholder-shown:text-xs
+                        "
+                  >
+                    Message
+                  </label>
+                </div>
 
                 <Button type="submit" className="w-full" variant="primary">
                   {loading ? "Sending..." : "Send Message"}

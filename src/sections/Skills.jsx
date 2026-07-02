@@ -37,6 +37,33 @@ const skillGroups = [
   },
 ];
 
+const cardVariants = [
+  {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  },
+  {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  },
+  {
+    hidden: { opacity: 0, x: 60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  },
+];
+
 const techTags = [
   "React",
   "Vite",
@@ -94,7 +121,14 @@ const Skills = () => {
           className="mt-14 grid gap-6 lg:grid-cols-3"
         >
           {skillGroups.map((group, groupIndex) => (
-            <motion.div key={group.title} variants={itemVariants} whileHover={{ y: -4 }}>
+            <motion.div
+              key={group.title}
+              variants={cardVariants[groupIndex]}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              whileHover={{ y: -4 }}
+            >
               <GlassCard className="h-full p-6 sm:p-7">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-[var(--fg)]">
@@ -107,14 +141,33 @@ const Skills = () => {
 
                 <div className="space-y-5">
                   {group.items.map((skill, index) => (
-                    <div key={skill.name}>
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        duration: 0.55,
+                        delay: groupIndex * 0.12 + index * 0.1,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+
                       <div className="mb-2 flex items-center justify-between">
                         <span className="text-sm font-medium text-[var(--fg)]">
                           {skill.name}
                         </span>
-                        <span className="text-sm text-[var(--muted)]">
+                        <motion.span
+                          initial={{ opacity: 0, x: 8 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: groupIndex * 0.12 + index * 0.1 + 0.25,
+                          }}
+                          className="text-sm text-[var(--muted)]"
+                        >
                           {skill.level}%
-                        </span>
+                        </motion.span>
                       </div>
 
                       <div className="h-2 overflow-hidden rounded-full bg-[var(--border)]">
@@ -130,7 +183,7 @@ const Skills = () => {
                           className="h-full rounded-full bg-gradient-theme shadow-[0_0_20px_rgba(37,99,235,0.25)]"
                         />
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </GlassCard>
@@ -196,8 +249,8 @@ const Skills = () => {
             </div>
           </GlassCard>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
 
